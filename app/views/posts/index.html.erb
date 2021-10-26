@@ -1,0 +1,8 @@
+<h1>Testing Index</h1>
+
+<% @posts.each do |post| %>
+  <%= post.title %> <br>
+  <% if user_signed_in? %>
+    by <%= post.user.email %> <br>
+  <% end %>
+<% end %>
