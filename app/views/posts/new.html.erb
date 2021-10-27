@@ -2,8 +2,8 @@
 
 <%= form_with model: @post, local: true do |form| %>
   <%= form.label :title, "Add a title:" %>
-  <%= form.text_field :title, value: "My Post" %> <br><br>
-  <%= form.text_area :body, placeholder: "Your post here..."%> <br><br>
+  <%= form.text_field :title %> <br><br>
+  <%= form.text_area :body, placeholder: "Your post here...", size: "40x10"%> <br><br>
   <%= form.submit %>
 <% end %>
 

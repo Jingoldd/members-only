@@ -1,20 +1,21 @@
-<h1>Testing Index</h1>
+<h1>Latest Post</h1>
 
-<% @posts.each do |post| %>
-  <%= post.title %> <br>
-  <%= post.body %> <br>
+<% @posts.reverse.each do |post| %>
+  <h2><%= post.title %></h2>
+  <p><%= post.body %></p>
   <% if user_signed_in? %>
-    by <%= post.user.name %> <br>
+    by <strong><%= post.user.name %></strong>
   <% end %>
+    at <%= post.created_at %>
   <br><br>
 <% end %>
-
+  <br><br>
 <% if user_signed_in? %> 
   <%= link_to 'Create new post', new_post_path %>
-  <br>
+  <br><br>
   <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to 'Sign Up', new_user_registration_path %> for create new posts!
-  <br>
+  <br><br>
   Or <%= link_to 'Log In', new_user_session_path %>!
 <% end %>
