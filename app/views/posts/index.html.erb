@@ -3,13 +3,20 @@
 <% @posts.reverse.each do |post| %>
   <h2><%= post.title %></h2>
   <p><%= post.body %></p>
+  
   <% if user_signed_in? %>
     by <strong><%= post.user.name %></strong>
   <% end %>
     at <%= post.created_at %>
   <br><br>
-<% end %>
+  <% if user_signed_in? && current_user[:id] === post.user_id %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+  <% end %>
   <br><br>
+<% end %>
+  
+  <br><br>
+
 <% if user_signed_in? %> 
   <%= link_to 'Create new post', new_post_path %>
   <br><br>
@@ -19,3 +26,6 @@
   <br><br>
   Or <%= link_to 'Log In', new_user_session_path %>!
 <% end %>
+
+
+
