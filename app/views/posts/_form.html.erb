@@ -1,6 +1,6 @@
 <%= form_with model: @post, local: true do |form| %>
-  <%= form.label :title, "Add a title:" %>
-  <%= form.text_field :title %> <br><br>
-  <%= form.text_area :body, placeholder: "Your post here...", size: "40x10"%> <br><br>
-  <%= form.submit %>
+  <%= form.label :title, "Add a title:", class: "label" %>
+  <%= form.text_field :title, class: "input" %> <br><br>
+  <%= form.text_area :body, placeholder: "Your post here...", class: "textarea" %> <br><br>
+  <%= form.submit class: "button is-link" %>
 <% end %>

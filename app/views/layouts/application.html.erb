@@ -18,6 +18,21 @@
       <p class="alert"><%= alert %></p>
     <% end %>
 
-    <%= yield %>
+    <!-- Basic Header -->
+    <section class="hero is-small is-dark">
+      <div class="hero-body">
+        <p class="title">
+          <%= link_to "Members Only!", root_path %>
+        </p>
+        <p class="subtitle">
+          Exclusive clubhouse
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container p-2">
+      <%= yield %>
+    </div>
   </body>
 </html>

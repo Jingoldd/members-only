@@ -1,31 +1,38 @@
-<h1>Latest Post</h1>
+<div class="box"> 
+  <% if user_signed_in? %> 
+    <%= link_to 'Create new post', new_post_path, class: "button is-medium is-link" %>
+    <%= link_to 'My Account Settings', edit_user_registration_path, class: "button is-medium is-dark is-outlined" %>
+    <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "button is-medium is-dark is-outlined" %>
+  <% else %>
+    <h2 class="title is-3">Do you want to know who wrote these posts or create your own?</h2>
+      <%= link_to 'Log In', new_user_session_path, class: "button is-medium is-link" %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: "button is-medium is-link is-outlined" %>
+  <% end %>
+</div>
+
 
 <% @posts.reverse.each do |post| %>
-  <h2><%= post.title %></h2>
-  <p><%= post.body %></p>
+   <div class="box">
+      <h3 class="title is-4"><%= post.title %></h3>
+      <p class=""><%= post.body %></p>
+      <br>
+      
+      <% if user_signed_in? %>
+        by <strong><%= post.user.name %></strong>
+      <% end %>
+      
+      at <%= post.created_at %>
+      <br><br>
+      <% if user_signed_in? && current_user[:id] === post.user_id %>
+        <%= link_to 'Edit post', edit_post_path(post), class: "button is-link" %>
+      <% end %>
+   </div>
   
-  <% if user_signed_in? %>
-    by <strong><%= post.user.name %></strong>
-  <% end %>
-    at <%= post.created_at %>
-  <br><br>
-  <% if user_signed_in? && current_user[:id] === post.user_id %>
-    <%= link_to 'Edit', edit_post_path(post) %>
-  <% end %>
-  <br><br>
 <% end %>
   
   <br><br>
 
-<% if user_signed_in? %> 
-  <%= link_to 'Create new post', new_post_path %>
-  <br><br>
-  <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign Up', new_user_registration_path %> for create new posts!
-  <br><br>
-  Or <%= link_to 'Log In', new_user_session_path %>!
-<% end %>
+
 
 
 

@@ -1,8 +1,8 @@
-<h1>Edit Post</h1>
+<h1 class="title is-3">Edit Post</h1>
 
 <%= render 'posts/form' %>
 
+<br>
+<%= link_to 'Delete post', @post, method: :delete, data: { confirm: "Are you sure?" }, class: "button is-danger is-light" %>
 <br><br>
-<%= link_to 'Delete post', @post, method: :delete, data: { confirm: "Are you sure?" } %>
-<br><br>
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path, class: "button is-dark" %>
