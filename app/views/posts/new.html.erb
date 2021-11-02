@@ -3,4 +3,4 @@
 <%= render 'posts/form'%>
 
 <br><br>
-<%= link_to 'Back', root_path, class: "button is-dark" %>
+<%= link_to 'Back', root_path, class: "button is-dark", data: { confirm: "Unsaved changes will be lost, are you sure?" } %>
